@@ -28,7 +28,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "./node_modules/bulma/bulma.sass",
+              "./node_modules/font-awesome/scss/font-awesome.scss"
             ],
             "scripts": []
           },
@@ -123,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "complimentr"
+    }
+  },
+  "defaultProject": "complimentr",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -1,0 +1,39 @@
+<section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          <div></div>
+          <form>
+
+            <div class="field">
+              <label class="label" for="email">Email</label>
+              <p class="control has-icons-left has-icons-right">
+                <input class="input" type="email" id="email" placeholder="Email">
+                <span class="icon is-small is-left">
+                  <i class="fa fa-envelope"></i>
+                </span>
+                <span class="icon is-small is-right">
+                  <i class="fa fa-check"></i>
+                </span>
+              </p>
+            </div>
+            <div class="field">
+              <label class="label" for="password">Password</label>
+              <p class="control has-icons-left">
+                <input class="input" type="password" id="password" placeholder="Password">
+                <span class="icon is-small is-left">
+                  <i class="fa fa-lock"></i>
+                </span>
+              </p>
+            </div>
+            <button class="button is-success">Login</button>
+            <div class="has-text-centered">
+              <small class="i">Dont have an account? <a [routerLink]="['/register']">Register</a></small>
+            </div>
+          </form>
+        </div>
+        <div class="column">
+        </div>
+      </div>
+    </div>
+  </section>
