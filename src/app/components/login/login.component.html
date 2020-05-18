@@ -1,39 +1,40 @@
 <section class="section">
-    <div class="container">
-      <div class="columns">
-        <div class="column">
-          <div></div>
-          <form>
-
+  <div class="container">
+    <div class="columns is-vcentered">
+      <div class="column is-half is-offset-one-quarter">
+        <div class="box">
+          <div class="has-text-centered">
+            <h2 class="is-size-3">Log In</h2>
+          </div>
+          <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
             <div class="field">
               <label class="label" for="email">Email</label>
               <p class="control has-icons-left has-icons-right">
-                <input class="input" type="email" id="email" placeholder="Email">
+                <input type="email" name="email" [(ngModel)]="email" #userEmail=ngModel class="input" type="email"
+                  id="email" placeholder="Email" required>
                 <span class="icon is-small is-left">
                   <i class="fa fa-envelope"></i>
-                </span>
-                <span class="icon is-small is-right">
-                  <i class="fa fa-check"></i>
                 </span>
               </p>
             </div>
             <div class="field">
               <label class="label" for="password">Password</label>
               <p class="control has-icons-left">
-                <input class="input" type="password" id="password" placeholder="Password">
+                <input type="password" name="password" [(ngModel)]="password" #userPassword=ngModel class="input"
+                  type="password" id="password" placeholder="Password" required>
                 <span class="icon is-small is-left">
                   <i class="fa fa-lock"></i>
                 </span>
               </p>
             </div>
-            <button class="button is-success">Login</button>
+            <button [disabled]="!loginForm.form.valid" class="button is-success"
+              [class.is-loading]="loading">Login</button>
             <div class="has-text-centered">
               <small class="i">Dont have an account? <a [routerLink]="['/register']">Register</a></small>
             </div>
           </form>
         </div>
-        <div class="column">
-        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>

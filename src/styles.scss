@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+  background: hsl(278, 96%, 50%);
+  width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.section{
+  padding-top: 70px !important;
+}
