@@ -1,10 +1,11 @@
+<app-header></app-header>
 <section class="section">
-  <div class="container">
     <div class="columns is-vcentered">
       <div class="column is-half is-offset-one-quarter">
         <div class="box">
           <div class="has-text-centered">
             <h2 class="is-size-3">Log In</h2>
+            <small class="has-text-danger" *ngIf="errors">{{errors}}</small>
           </div>
           <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
             <div class="field">
@@ -27,14 +28,12 @@
                 </span>
               </p>
             </div>
-            <button [disabled]="!loginForm.form.valid" class="button is-success"
-              [class.is-loading]="loading">Login</button>
-            <div class="has-text-centered">
-              <small class="i">Dont have an account? <a [routerLink]="['/register']">Register</a></small>
+            <div>
+              <button [disabled]="!loginForm.form.valid" class="button is-success"
+                [class.is-loading]="loading">Login</button>
             </div>
           </form>
         </div>
       </div>
     </div>
-  </div>
 </section>

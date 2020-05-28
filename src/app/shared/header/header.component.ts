@@ -9,10 +9,12 @@ import { AuthService } from 'src/app/_helpers';
 export class HeaderComponent implements OnInit {
   user;
   constructor(private authService: AuthService) {
-    this.user = JSON.parse(localStorage.getItem('user'));
+
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem('user'));
+  }
 
   logOut() {
     this.authService.SignOut();

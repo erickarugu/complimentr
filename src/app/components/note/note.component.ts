@@ -1,21 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-note',
   templateUrl: './note.component.html',
-  styles: [
-  ]
+  styles: []
 })
 export class NoteComponent implements OnInit {
   name: string;
+  color: string;
   loading: boolean = false;
-  message: string;
+  message: string="";
+  _db: AngularFirestore;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(public db: AngularFirestore, private router: Router) {
+    this._db = db;
   }
 
-  onSubmit(){}
+  ngOnInit(): void {}
 
+  addCompliment() {
+    this.loading = true;
+    if (this.name && this.color && this.message) {
+      let complimentsCollection = this._db.collection('notes');
+      complimentsCollection.add({color: this.color, message: this.message});
+      this.loading = false;
+    }
+  }
 }

@@ -1,36 +1,49 @@
-<section class="section">
-  <div class="container">
-    <div class="columns is-vcentered">
-      <div class="column is-half is-offset-one-quarter">
-        <div class="box">
-          <div class="has-text-centered">
-            <h2 class="is-size-3">New Anony-Compliment 😉</h2>
-            <hr>
+<div class="modal-background"></div>
+<div class="modal-card">
+  <header class="modal-card-head has-background-info has-text-white">
+    <h2 class="is-size-3">New Anony-Compliment 😉</h2>
+    <button class="modal-close is-large" id="modal-close-button" aria-label="close" data-target="modal"></button>
+  </header>
+  <section class="modal-card-body">
+    <form (ngSubmit)="addCompliment()" #form="ngForm">
+      {{form.form.valid}}
+      <div class="field">
+        <label class="label" for="email">Choose note color</label>
+        <div class="control">
+          <div class="select is-warning">
+            <select [(ngModel)]="color" name="color" required>
+              <option value="is-success" selected>Green</option>
+              <option value="is-info">Blue</option>
+              <option value="is-warning">Yellow</option>
+              <option value="is-danger">Red</option>
+            </select>
           </div>
-          <form (ngSubmit)="onSubmit()" #form="ngForm">
-            <div class="field">
-              <label class="label" for="email">Name</label>
-              <p class="control has-icons-left">
-                <input type="text" name="name" [(ngModel)]="name" #userName=ngModel class="input is-warning" id="name"
-                  placeholder="Name" required>
-                <span class="icon is-small is-left">
-                  <i class="fa fa-user"></i>
-                </span>
-              </p>
-            </div>
-            <div class="field">
-              <label class="label" for="message">Compliment</label>
-              <div class="control">
-                <textarea id="message" name="message" [(ngModel)]="message" #userMessage=ngModel
-                  class="textarea is-warning has-fixed-size" placeholder="Enter Compliment" required></textarea>
-              </div>
-            </div>
-            <button [disabled]="!form.form.valid" class="button is-info" [class.is-loading]="loading">
-              Stick <i class="fa fa-thumb-tack"></i>
-            </button>
-          </form>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+      <div class="field">
+        <label class="label" for="email">Name</label>
+        <p class="control has-icons-left">
+          <input type="text" name="name" [(ngModel)]="name" #userName=ngModel class="input is-warning" id="name"
+            placeholder="Name" required>
+          <span class="icon is-small is-left">
+            <i class="fa fa-user"></i>
+          </span>
+        </p>
+      </div>
+      <div class="field">
+        <label class="label" for="message">Compliment</label>
+        <div class="control">
+          <textarea id="message" name="message" [(ngModel)]="message" #userMessage=ngModel
+            class="textarea is-warning has-fixed-size" placeholder="Enter Compliment ...Max(200 characters)"
+            maxlength="200"
+            required>
+          </textarea>
+        <small>You have {{200 - message.length}} characters remaining</small>
+        </div>
+      </div>
+      <button [disabled]="!form.form.valid" class="button is-info" [class.is-loading]="loading">
+          Stick <i class="fa fa-thumb-tack"></i>
+        </button>
+    </form>
+  </section>
+</div>

@@ -2,7 +2,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { User } from '../shared';
+import { User } from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -27,45 +27,10 @@ export class AuthService {
     });
   }
 
-  SignIn(email, password) {
-    return this.afAuth
-      .signInWithEmailAndPassword(email, password)
-      .then(result => {
-          this.router.navigate(['home']);
-          return result;
-      })
-      .catch(error => {
-        window.alert(error.message);
-      });
-  }
-
-  SignUp(email, password) {
-    return this.afAuth
-      .createUserWithEmailAndPassword(email, password)
-      .then(result => {
-        this.sendEmailVerification();
-      })
-      .catch(error => {
-        window.alert(error.message);
-      });
-  }
-
-  async sendEmailVerification() {
-    return (await this.afAuth.currentUser).sendEmailVerification();
-    // .then(() => {
-    //   this.router.navigate(['verify-email']);
-    // });
-  }
-
-   sendPasswordResetEmail(passwordResetEmail) {
-    return this.afAuth
-      .sendPasswordResetEmail(passwordResetEmail)
-      .then(() => {
-        window.alert('Password reset email sent,please check your inbox.');
-      })
-      .catch(error => {
-        window.alert(error);
-      });
+   SignIn(email, password) {
+     this.afAuth.signInWithEmailAndPassword(email, password).then(result => {
+      this.router.navigate(['home']);
+    });
   }
 
   get isLoggedIn(): boolean {
@@ -73,26 +38,11 @@ export class AuthService {
     return (user !== null) ? true : false;
   }
 
-  // SetUserData(user){
-  //   const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-  //   const userData: User = {
-  //     uid: user.uid,
-  //     email: user.email,
-  //     displayName: user.displayName,
-  //     photoURL: user.photoURL,
-  //     emailVerified: user.emailVerified
-  //   }
-  //   return userRef.set(userData, {
-  //     merge: true
-  //   })
-  // }
-
   SignOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['login']);
+      this.router.navigate(['about']);
     });
   }
 
-  async GoogleAuth() {}
 }

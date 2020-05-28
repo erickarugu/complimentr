@@ -7,32 +7,34 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent, FooterComponent, AuthGuard, SecureInnerPagesGuard } from './shared';
-import { LoginComponent, RegisterComponent, HomeComponent, UserComponent, NotFoundComponent, NoteComponent } from './components';
+import { HeaderComponent, FooterComponent, AuthGuard, SecureInnerPagesGuard, ComplimentService } from './shared';
+import { LoginComponent, HomeComponent, NotFoundComponent, NoteComponent } from './components';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './_helpers';
+import { AboutComponent } from './components/about/about.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
     HomeComponent,
     NoteComponent,
-    UserComponent,
     NotFoundComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFirestoreModule.enablePersistence(),
+    AngularFireAuthModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [AuthService, AuthGuard, SecureInnerPagesGuard],
+  providers: [AuthService,ComplimentService, AuthGuard, SecureInnerPagesGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
