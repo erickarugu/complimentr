@@ -43,8 +43,8 @@ export class HomeComponent implements OnInit {
   constructor(private afs: AngularFirestore) {}
 
   ngOnInit(): void {
-    // this.notesCollection = this.afs.collection('notes');
-    // this.notes = this.notesCollection.valueChanges();
+    this.notesCollection = this.afs.collection('notes');
+    this.notes = this.notesCollection.valueChanges();
   }
 
 

@@ -12,7 +12,6 @@ import { LoginComponent, HomeComponent, NotFoundComponent, NoteComponent } from 
 import { environment } from 'src/environments/environment';
 import { AuthService } from './_helpers';
 import { AboutComponent } from './components/about/about.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -31,8 +30,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
-    AngularFireAuthModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    AngularFireAuthModule
   ],
   providers: [AuthService,ComplimentService, AuthGuard, SecureInnerPagesGuard],
   bootstrap: [AppComponent]
