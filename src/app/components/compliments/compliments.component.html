@@ -1,0 +1,44 @@
+<app-header></app-header>
+
+<div class="section">
+  <div class="container-fluid">
+    <div class="columns">
+      <div class="column is-one-quarter">
+        <p class="control has-icons-left">
+          <input class="input is-rounded" type="text" placeholder="Enter Name e.g Jane" [(ngModel)]="filterName" (input)="filterCompliments(filterName)">
+          <span class="icon is-left">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </span>
+        </p>
+      </div>
+      <div class="column has-vcentered">
+        <a class="button is-info modal-button" data-target="modal" (click)="toggleModal()">
+          <i class="fa fa-plus"></i>&nbsp;Note
+        </a>
+      </div>
+    </div>
+    <h1 class="is-size-1-tablet has-text-white has-text-centered">{{errorMessage}}</h1>
+    <div class="columns is-vcentered" *ngIf="notes">
+      <div class="column compliment is-one-quarter" *ngFor="let note of notes">
+        <article class="message {{note?.color}}">
+          <div class="message-header">
+            <p>{{note?.name}}</p>
+            <small><i class="fa fa-thumb-tack"></i></small>
+          </div>
+          <div class="message-body">
+            {{note?.message}}
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="spinner has-text-centered" *ngIf="!notes">
+      <h1 class="is-size-1-tablet has-text-white">Loading....</h1>
+    </div>
+  </div>
+  <div class="modal" id="modal" #modal>
+    <app-note (closeBtn)="toggleModal()"></app-note>
+  </div>
+</div>
+
+
+<app-footer></app-footer>

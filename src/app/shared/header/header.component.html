@@ -1,10 +1,10 @@
 <nav class="navbar is-black is-fixed-top" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" [routerLink]="['/about']">
+    <a class="navbar-item" [routerLink]="['/compliments']">
       <img src="./../../../assets/img/logo.png" width="35" height="28">
     </a>
 
-    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+    <a role="button" (click)="toggleNavbar()" #navBurger class="navbar-burger burger" aria-label="menu" aria-expanded="false"
       data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -12,32 +12,29 @@
     </a>
   </div>
 
-  <div id="navbarBasicExample" class="navbar-menu">
+  <div id="navbarBasicExample" class="navbar-menu" #navMenu>
     <div class="navbar-start">
-      <a class="navbar-item" [routerLink]="['home']">
-        Compliments
-      </a>
     </div>
 
-    <div class="navbar-end" *ngIf="!user">
-      <div class="navbar-item">
+    <div class="navbar-end">
+        <a class="navbar-item" [routerLink]="['/faq']" routerLinkActive>
+          FAQ
+        </a>
+      <div class="navbar-item" *ngIf="!user">
         <div class="buttons">
-          <a class="button is-light" [routerLink]="['/login']">
-            Log in
+          <a class="button is-primary" [routerLink]="['/login']">
+            Login &nbsp;<i class="fa fa-lock"></i>
           </a>
         </div>
       </div>
-    </div>
-    <div class="navbar-end" *ngIf="user">
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">@APCS-Y4</a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item" (click)="logOut()">
-            <strong><i class="fa fa-sign-out has-text-danger"></i> Log Out</strong>
-          </a>
+      <div class="navbar-item has-dropdown is-hoverable" *ngIf="user">
+          <a class="navbar-link">@APCS-Y4</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" (click)="logOut()">
+              <strong><i class="fa fa-sign-out has-text-danger"></i> Log Out</strong>
+            </a>
+          </div>
         </div>
-      </div>
     </div>
   </div>
 </nav>

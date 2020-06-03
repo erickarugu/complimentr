@@ -1,17 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent, LoginComponent, NoteComponent, NotFoundComponent } from './components';
-import { AuthGuard } from './shared';
-import { SecureInnerPagesGuard } from './shared/guard/secure-inner-pages.guard';
-import { AboutComponent } from './components/about/about.component';
-
+import { LoginComponent, NoteComponent, NotFoundComponent, FaqComponent, ComplimentsComponent, HomeComponent } from './components';
+import { AuthGuard, SecureInnerPagesGuard } from './shared';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'home' },
-  { path: 'about', component: AboutComponent },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '', pathMatch: 'full', redirectTo: 'compliments' },
+  { path: 'home', component: HomeComponent },
+  { path: 'compliments', component: ComplimentsComponent,canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent, canActivate: [SecureInnerPagesGuard] },
-  { path: 'note', component: NoteComponent, canActivate: [AuthGuard] },
+  { path: 'note', component: NoteComponent },
+  { path: 'faq', component: FaqComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

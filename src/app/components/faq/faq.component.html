@@ -1,0 +1,97 @@
+<app-header></app-header>
+<main>
+  <section class="main">
+    <h2 class="is-size-1-tablet has-text-white"><i class="fa fa-chevron-right"></i><i class="fa fa-chevron-right"></i><i class="fa fa-chevron-right"></i></h2>
+    <h2 class="has-text-centered is-size-1">🤓🤓</h2>
+    <h2 class="is-size-1-tablet has-text-white"><i class="fa fa-chevron-left"></i><i class="fa fa-chevron-left"></i><i class="fa fa-chevron-left"></i></h2>
+  </section>
+  <div class="has-text-centered">
+      <h1  class="title is-size-2-tablet">Frequently Asked Questions 📓</h1>
+      <hr class="top-hr">
+  </div>
+  <section class="accordions">
+    <div class="columns is-three-thirds">
+      <div class="column is-four-fifths">
+        <article class="accordion is-active" #accordion1>
+          <div class="accordion-header has-background-warning toggle" (click)="toggleAccordion(accordion1)">
+            <p><i class="fa fa-chevron-right"></i>&nbsp;What is Complimentr?</p>
+            <button class="toggle" aria-label="toggle" (click)="toggleAccordion(accordion1)"></button>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">
+                Complimentr is a platform that enables colleagues to compliment each other anonymously.
+            </div>
+          </div>
+        </article>
+        <article class="accordion" #accordion2>
+          <div class="accordion-header has-background-primary toggle" (click)="toggleAccordion(accordion2)">
+            <p><i class="fa fa-chevron-right"></i>&nbsp;Why Complimentr?</p>
+            <button class="toggle" aria-label="toggle" (click)="toggleAccordion(accordion2)"></button>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">
+                Compliments play a major role in keeping us motivated and knowing our efforts are appreciated.
+                <br>"Complimentor" was also not available. lol.
+            </div>
+          </div>
+        </article>
+        <article class="accordion" #accordion3>
+          <div class="accordion-header has-background-success toggle" (click)="toggleAccordion(accordion3)">
+            <p><i class="fa fa-chevron-right"></i>&nbsp;How does it work?</p>
+            <button class="toggle" aria-label="toggle" (click)="toggleAccordion(accordion3)"></button>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">
+                Sign in using credentials shared by the leader in your team. Once you are logged in, you can post new notes plus view compliments posted in your team-wall by other members.
+            </div>
+          </div>
+        </article>
+        <article class="accordion" #accordion6>
+            <div class="accordion-header has-background-danger toggle" (click)="toggleAccordion(accordion6)">
+              <p><i class="fa fa-chevron-right"></i>&nbsp;Is Complimentr anonymous?</p>
+              <button class="toggle" aria-label="toggle" (click)="toggleAccordion(accordion3)"></button>
+            </div>
+            <div class="accordion-body">
+              <div class="accordion-content">
+                 Yes. We do not ask for personal details in any stage.
+              </div>
+            </div>
+          </article>
+          <article class="accordion" #accordion7>
+              <div class="accordion-header has-background-black toggle" (click)="toggleAccordion(accordion7)">
+                <p><i class="fa fa-chevron-right"></i>&nbsp;Can I delete Compliments?</p>
+                <button class="toggle" aria-label="toggle" (click)="toggleAccordion(accordion3)"></button>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-content">
+                    We do not ask for personal details hence it is impossible to know who posted which compliment. However, A reporting feature is under development.
+                </div>
+              </div>
+            </article>
+        <article class="accordion" #accordion4>
+          <div class="accordion-header has-background-info toggle" (click)="toggleAccordion(accordion4)">
+            <p><i class="fa fa-chevron-right"></i>&nbsp;Who created Complimentr?</p>
+            <button class="toggle" aria-label="toggle" (click)="toggleAccordion(accordion3)"></button>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">
+                Complimentr was created by great people for use by amazing people like you.
+            </div>
+          </div>
+        </article>
+        <article class="accordion" #accordion5>
+          <div class="accordion-header has-background-dark toggle" (click)="toggleAccordion(accordion5)">
+            <p><i class="fa fa-chevron-right"></i>&nbsp;Is Complimentr FREE?</p>
+            <button class="toggle" aria-label="toggle" (click)="toggleAccordion(accordion3)"></button>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">
+                Yes, Complimentr is absolutely FREE.
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+<app-footer></app-footer>
+</main>

@@ -27,11 +27,8 @@ export class AuthService {
     });
   }
 
-   SignIn(email, password) {
-     this.afAuth.signInWithEmailAndPassword(email, password)
-     .then(result => {
-       if(result) this.router.navigate(['/home']);
-    });
+   async SignIn(email, password) {
+     return await this.afAuth.signInWithEmailAndPassword(email, password);
   }
 
   get isLoggedIn(): boolean {
@@ -39,10 +36,10 @@ export class AuthService {
     return (user !== null) ? true : false;
   }
 
-  SignOut() {
-    return this.afAuth.signOut().then(() => {
+  async SignOut() {
+    return await this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['about']);
+      this.router.navigate(['/home']);
     });
   }
 

@@ -1,51 +1,42 @@
-import { Component, OnInit } from '@angular/core';
-import { Compliment } from 'src/app/shared/services/compliment';
-import { Observable } from 'rxjs';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { AuthService } from 'src/app/_helpers';
 
 @Component({
-  selector: 'app-home',
   templateUrl: './home.component.html',
-  styles: [
-    `
-      .section {
-        height: 100%;
-        min-height: 100vh;
-        background: url(./../../assets/img/bg.png);
-        background-size: cover;
-        background-postion: center;
-      }
-      .columns {
-        display: flex;
-        flex-flow: row wrap;
-      }
-      .compliment{
-        min-width: 250px;
-        transition: transform .3s ease;
-      }
-      .compliment:hover{
-        transform: translateY(-2px);
-        cursor: pointer;
-        transform: rotate(2deg);
-      }
-      .message-body {
-        font-family: 'Shadows Into Light Two', cursive;
-        font-size: 20px;
-      }
-    `
+  styles: [`
+  .hero{
+    background: url(./../../assets/img/main.png);
+    background-color: rgba(125,4,195,0.5);
+    background-blend-mode: overlay;
+    /* background: hsl(278, 96%, 50%); */
+    background-size: cover;
+    background-postion: center;
+
+  }
+  `
   ]
 })
 export class HomeComponent implements OnInit {
-  notesCollection: AngularFirestoreCollection<Compliment>;
-  notes: Observable<Compliment[]>;
+  @ViewChild('navBurger') navBurger: ElementRef;
+  @ViewChild('navMenu') navMenu: ElementRef;
 
-  constructor(private afs: AngularFirestore) {}
+  user;
+  constructor(private authService: AuthService) {
 
-  ngOnInit(): void {
-    this.notesCollection = this.afs.collection('notes');
-    this.notes = this.notesCollection.valueChanges();
   }
 
+  ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem('user'));
+  }
+
+  toggleNavbar(){
+    this.navBurger.nativeElement.classList.toggle('is-active');
+    this.navMenu.nativeElement.classList.toggle('is-active');
+  }
+
+  logOut() {
+    this.authService.SignOut();
+    this.user = '';
+  }
 
 }

@@ -1,39 +1,70 @@
-<app-header></app-header>
+<section class="hero is-info is-fullheight">
+    <!-- Hero head: will stick at the top -->
+    <div class="hero-head">
+      <header class="navbar">
+        <div class="container">
+          <div class="navbar-brand">
+            <a class="navbar-item" [routerLink]="['/compliments']">
+              <img src="./../../../assets/img/logo-lg.png" alt="Logo" height="198">
+            </a>
+            <span (click)="toggleNavbar()" #navBurger class="navbar-burger burger" data-target="navbarMenuHeroC">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </div>
+          <div id="navbarMenuHeroC" class="navbar-menu" #navMenu>
+            <div class="navbar-end">
+              <a class="navbar-item" [routerLink]="['/faq']">
+                FAQ
+              </a>
+              <div class="navbar-end" *ngIf="user">
+                  <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">@APCS-Y4</a>
 
-<div class="section">
-  <div class="container-fluid">
-    <div class="columns">
-      <div class="column is-one-quarter">
-        <p class="control has-icons-left">
-          <input class="input is-rounded" type="text" placeholder="Enter Name e.g Jane">
-          <span class="icon is-left">
-            <i class="fa fa-search" aria-hidden="true"></i>
-          </span>
-        </p>
-      </div>
-      <div class="column has-vcentered">
-        <a class="button is-info modal-button" data-target="modal">
-          <i class="fa fa-plus"></i> Note
-        </a>
+                    <div class="navbar-dropdown">
+                      <a class="navbar-item has-text-dark" (click)="logOut()">
+                        <strong><i class="fa fa-sign-out has-text-danger"></i> Log Out</strong>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              <span class="navbar-item" *ngIf="!user">
+                <a class="button is-success is-inverted" [routerLink]="['/login']">
+                  <span class="icon">
+                    <i class="fa fa-lock"></i>
+                  </span>
+                  <span>Login</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <!-- Hero content: will be in the middle -->
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title is-size-1-tablet">
+          Compliment your colleagues Today.
+        </h1>
+        <h2 class="subtitle">
+          What you feel matters, Speak it out.
+        </h2>
+        <button class="button is-warning is-large is-rounded" [routerLink]="['/login']" *ngIf="!user">Join Complimentr  <i class="fa fa-users"></i></button>
       </div>
     </div>
-    <div class="columns">
-      <div class="column compliment is-one-quarter" *ngFor="let note of notes | async">
-        <article class="message {{note?.color}}">
-          <div class="message-header">
-            <p>{{note?.name}}</p>
-            <small><i class="fa fa-thumb-tack"></i></small>
-          </div>
-          <div class="message-body">
-            {{note?.message}}
-          </div>
-        </article>
+      <!-- Hero footer: will stick at the bottom -->
+  <div class="hero-foot">
+    <nav class="tabs is-boxed is-fullwidth">
+      <div class="container">
+        <ul>
+          <li><a><i class="fa fa-globe"></i>  Website</a></li>
+          <li><a><i class="fa fa-github"></i> Github</a></li>
+          <li><a><i class="fa fa-twitter"></i> Twiiter</a></li>
+        </ul>
       </div>
-    </div>
+    </nav>
   </div>
-</div>
-<div class="modal" id="modal">
-  <app-note></app-note>
-</div>
-
-<app-footer></app-footer>
+  </section>

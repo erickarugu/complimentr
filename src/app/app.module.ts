@@ -7,22 +7,22 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent, FooterComponent, AuthGuard, SecureInnerPagesGuard, ComplimentService } from './shared';
-import { LoginComponent, HomeComponent, NotFoundComponent, NoteComponent } from './components';
+import { HeaderComponent, FooterComponent, AuthGuard, ComplimentService, SecureInnerPagesGuard } from './shared';
+import { LoginComponent, NotFoundComponent, NoteComponent, FaqComponent, ComplimentsComponent, HomeComponent } from './components';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './_helpers';
-import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent,
+    ComplimentsComponent,
     NoteComponent,
     NotFoundComponent,
     HeaderComponent,
     FooterComponent,
-    AboutComponent
+    HomeComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,

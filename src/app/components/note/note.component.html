@@ -1,29 +1,29 @@
 <div class="modal-background"></div>
 <div class="modal-card">
-  <header class="modal-card-head has-background-info has-text-white">
-    <h2 class="is-size-3">New Anony-Compliment 😉</h2>
-    <button class="modal-close is-large" id="modal-close-button" aria-label="close" data-target="modal"></button>
+  <header class="modal-card-head has-text-white" [ngClass]="getTheme()">
+    <h2 class="is-size-3-tablet">New Compliment 😉</h2>
+    <button (click)="closeModal()" class="modal-close is-large" id="modal-close-button" aria-label="close" data-target="modal"></button>
   </header>
   <section class="modal-card-body">
-    <form (ngSubmit)="addCompliment()" #form="ngForm">
-      {{form.form.valid}}
+    <form (ngSubmit)="addCompliment(form)" #form="ngForm">
       <div class="field">
-        <label class="label" for="email">Choose note color</label>
+        <label class="label" for="email">Choose note color:<span class="has-text-danger"> *</span></label>
         <div class="control">
-          <div class="select is-warning">
+          <div class="select" [ngClass]="color">
             <select [(ngModel)]="color" name="color" required>
               <option value="is-success" selected>Green</option>
               <option value="is-info">Blue</option>
               <option value="is-warning">Yellow</option>
               <option value="is-danger">Red</option>
+              <option value="is-dark">Dark</option>
             </select>
           </div>
         </div>
       </div>
       <div class="field">
-        <label class="label" for="email">Name</label>
+        <label class="label" for="email">Name:<span class="has-text-danger"> *</span></label>
         <p class="control has-icons-left">
-          <input type="text" name="name" [(ngModel)]="name" #userName=ngModel class="input is-warning" id="name"
+          <input type="text" name="name" [(ngModel)]="name" #userName=ngModel class="input" [ngClass]="color" id="name"
             placeholder="Name" required>
           <span class="icon is-small is-left">
             <i class="fa fa-user"></i>
@@ -31,17 +31,17 @@
         </p>
       </div>
       <div class="field">
-        <label class="label" for="message">Compliment</label>
+        <label class="label" for="message">Compliment:<span class="has-text-danger"> *</span></label>
         <div class="control">
           <textarea id="message" name="message" [(ngModel)]="message" #userMessage=ngModel
-            class="textarea is-warning has-fixed-size" placeholder="Enter Compliment ...Max(200 characters)"
+            class="textarea has-fixed-size" [ngClass]="color" placeholder="Enter Compliment ...Max(200 characters)"
             maxlength="200"
             required>
           </textarea>
         <small>You have {{200 - message.length}} characters remaining</small>
         </div>
       </div>
-      <button [disabled]="!form.form.valid" class="button is-info" [class.is-loading]="loading">
+      <button name="submit" [disabled]="!form.form.valid" class="button" [class.is-loading]="loading" [ngClass]="color">
           Stick <i class="fa fa-thumb-tack"></i>
         </button>
     </form>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from 'src/app/_helpers';
 
 @Component({
@@ -7,6 +7,9 @@ import { AuthService } from 'src/app/_helpers';
   styles: []
 })
 export class HeaderComponent implements OnInit {
+  @ViewChild('navBurger') navBurger: ElementRef;
+  @ViewChild('navMenu') navMenu: ElementRef;
+
   user;
   constructor(private authService: AuthService) {
 
@@ -14,6 +17,11 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user'));
+  }
+
+  toggleNavbar(){
+    this.navBurger.nativeElement.classList.toggle('is-active');
+    this.navMenu.nativeElement.classList.toggle('is-active');
   }
 
   logOut() {
