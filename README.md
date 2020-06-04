@@ -21,7 +21,7 @@ Ensure you have [NodeJs](https://nodejs.org/en/) and [NPM](https://www.npmjs.com
 ## Development server
 
 Run the following command in your terminal after all the dependencies are installed for a dev server. 
-```ng serve```
+``ng serve``
 Then Navigate to `http://localhost:4200/` to see it live. 
 The app will automatically reload if you change any of the source files.
 
