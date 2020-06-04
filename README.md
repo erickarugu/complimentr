@@ -11,7 +11,7 @@ Inspired by physical sticky notes.
 ## Clone to run/edit/use locally
 The provided source code is free to clone and use locally.Run the following command in your terminal to clone this repo:
 
-``git clone https://github.com/erickarugu32/complimentr.git``
+```git clone https://github.com/erickarugu32/complimentr.git```
 
 Alternatively you can download the zip folder and extract in your local machine.
 
