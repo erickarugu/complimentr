@@ -33,11 +33,11 @@ import { first } from 'rxjs/operators';
         font-family: 'Shadows Into Light Two', cursive;
         font-size: 20px;
       }
-    `
-  ]
+    `,
+  ],
 })
 export class ComplimentsComponent implements OnInit {
-  errorMessage;
+  errorMessage = '';
   filterName;
   @ViewChild('modal') modal: ElementRef;
   notes: any;
@@ -58,16 +58,18 @@ export class ComplimentsComponent implements OnInit {
   }
 
   async filterCompliments(name: string) {
-    this.errorMessage = "";
+    this.errorMessage = '';
     this.notes = await this.initializeCompliments();
-    if (!name) return;
-    this.notes = this.notes.filter(currentNote => {
+    if (!name) {
+      return;
+    }
+    this.notes = this.notes.filter((currentNote) => {
       if (currentNote.name && name) {
         return currentNote.name.toLowerCase().indexOf(name.toLowerCase()) > -1;
       }
     });
-    if(this.notes.length < 1){
-     this.errorMessage = "😞...No Match Found...😞";
+    if (this.notes.length < 1) {
+      this.errorMessage = '😞...No Match Found...😞';
     }
     console.log(this.notes, this.errorMessage);
   }

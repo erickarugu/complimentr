@@ -1,5 +1,5 @@
 export interface Compliment {
-  color: string,
-  name: string,
-  message: string
+  color: string;
+  name: string;
+  message: string;
 }

@@ -20,7 +20,7 @@ export class ResetPasswordComponent implements OnInit {
   email;
   message;
   errors;
-  loading: boolean = false;
+  loading = false;
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {}

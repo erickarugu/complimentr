@@ -32,9 +32,9 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   email: string;
   password: string;
-  c_password: string;
+  confirmPassword: string;
   submitted: false;
-  loading: boolean = false;
+  loading = false;
   errors = '';
 
   constructor(private authService: AuthService, private router: Router) {}
@@ -44,9 +44,9 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     this.loading = true;
     this.errors = '';
-    if (this.password !== this.c_password) {
+    if (this.password !== this.confirmPassword) {
       this.loading = false;
-      return (this.errors = "Passwords don't match!");
+      return (this.errors = 'Passwords don\'t match!');
     }
     if (this.password.length < 5) {
       this.loading = false;
@@ -69,14 +69,17 @@ export class RegisterComponent implements OnInit {
   }
 
   checkErrorType(error) {
-    if (error.code === 'auth/invalid-email')
+    if (error.code === 'auth/invalid-email') {
       return (this.errors = 'Invalid Email type');
-    if (error.code === 'auth/email-already-in-use')
+    }
+    if (error.code === 'auth/email-already-in-use') {
       return (this.errors = 'Email Already registered');
-    else return 'An error occurred. Please try again.';
+    } else {
+      return 'An error occurred. Please try again.';
+    }
   }
 
-  loginWithGoogle(){
+  loginWithGoogle() {
     this.authService.doGoogleLogin().then(
       (data) => {
         console.log(data);

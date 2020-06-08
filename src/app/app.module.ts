@@ -7,8 +7,24 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent, FooterComponent, AuthGuard, ComplimentService, SecureInnerPagesGuard } from './shared';
-import { LoginComponent, NotFoundComponent, NoteComponent, FaqComponent, ComplimentsComponent, HomeComponent, RegisterComponent, ResetPasswordComponent, GalleryComponent } from './components';
+import {
+  HeaderComponent,
+  FooterComponent,
+  AuthGuard,
+  ComplimentService,
+  SecureInnerPagesGuard,
+} from './shared';
+import {
+  LoginComponent,
+  NotFoundComponent,
+  NoteComponent,
+  FaqComponent,
+  ComplimentsComponent,
+  HomeComponent,
+  RegisterComponent,
+  ResetPasswordComponent,
+  GalleryComponent,
+} from './components';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './_helpers';
 
@@ -25,7 +41,7 @@ import { AuthService } from './_helpers';
     FaqComponent,
     RegisterComponent,
     ResetPasswordComponent,
-    GalleryComponent
+    GalleryComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,9 +49,9 @@ import { AuthService } from './_helpers';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
-    AngularFireAuthModule
+    AngularFireAuthModule,
   ],
-  providers: [AuthService,ComplimentService, AuthGuard, SecureInnerPagesGuard],
-  bootstrap: [AppComponent]
+  providers: [AuthService, ComplimentService, AuthGuard, SecureInnerPagesGuard],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
