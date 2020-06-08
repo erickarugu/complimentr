@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent, FooterComponent, AuthGuard, ComplimentService, SecureInnerPagesGuard } from './shared';
-import { LoginComponent, NotFoundComponent, NoteComponent, FaqComponent, ComplimentsComponent, HomeComponent } from './components';
+import { LoginComponent, NotFoundComponent, NoteComponent, FaqComponent, ComplimentsComponent, HomeComponent, RegisterComponent, ResetPasswordComponent, GalleryComponent } from './components';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './_helpers';
 
@@ -22,7 +22,10 @@ import { AuthService } from './_helpers';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    FaqComponent
+    FaqComponent,
+    RegisterComponent,
+    ResetPasswordComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,

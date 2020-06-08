@@ -1,0 +1,72 @@
+<section class="section">
+  <div class="columns is-vcentered">
+    <div class="column is-half is-offset-one-quarter">
+      <div class="box">
+          <div class="img-box">
+              <img src="./../../../assets/img/logo.png" alt="Complimentr Logo" [routerLink]="['/home']" title="Go Home">
+            </div>
+        <div class="has-text-centered">
+          <h2 class="is-size-3">Register</h2>
+        </div>
+        <hr>
+        <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+          <div class="field has-text-centered">
+            <a class="button is-warning is-inverted" (click)="loginWithGoogle()">
+              <i class="fa fa-google has-text-success"></i>&nbsp;Login with Google
+            </a>
+           <hr class="title">
+           <h3 class="subtitle has-text-dark is-size-4">OR</h3>
+           <small class="has-text-danger has-text-centered" *ngIf="errors">{{errors}}</small>
+          </div>
+          <div class="field">
+            <label class="label" for="email">Please select your Team:<span class="has-text-danger"> *</span></label>
+            <div class="control">
+              <div class="select">
+                <select name="color" required>
+                  <option value="is-success" selected>APCS Y4</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label" for="email">Email:<span class="has-text-danger"> *</span></label>
+            <p class="control has-icons-left has-icons-right">
+              <input type="email" name="email" [(ngModel)]="email" #userEmail=ngModel class="input" type="email"
+                id="email" placeholder="Email" required>
+              <span class="icon is-small is-left">
+                <i class="fa fa-envelope"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <label class="label" for="password">Password:<span class="has-text-danger"> *</span></label>
+            <p class="control has-icons-left">
+              <input type="password" name="password" [(ngModel)]="password" #userPassword=ngModel class="input"
+                type="password" id="password" placeholder="Password" required>
+              <span class="icon is-small is-left">
+                <i class="fa fa-lock"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <label class="label" for="c_password">Confirm Password:<span class="has-text-danger"> *</span></label>
+            <p class="control has-icons-left">
+              <input type="password" name="c_password" [(ngModel)]="c_password" #userConfirmPassword=ngModel class="input"
+                type="password" id="c_password" placeholder="Confirm Password" required>
+              <span class="icon is-small is-left">
+                <i class="fa fa-lock"></i>
+              </span>
+            </p>
+          </div>
+          <div>
+            <button [disabled]="!loginForm.form.valid" class="button is-info"
+              [class.is-loading]="loading">Register&nbsp;<i class="fa fa-book"></i></button>
+          </div>
+        </form>
+        <div class="has-text-centered">
+          <small>Already have an Account?<a class="link" [routerLink]="['/login']">&nbsp;Sign in</a></small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

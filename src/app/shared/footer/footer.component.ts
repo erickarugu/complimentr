@@ -6,9 +6,10 @@ import { Component, OnInit } from '@angular/core';
     <footer class="footer is-dark">
     <div class="content has-text-centered">
     <p>
-      <strong>Complimentr</strong> by <a href="https://erickarugu32.github.io">Eric Karugu</a>. The source code is licensed
+      <strong>Complimentr</strong> by <a href="https://erickarugu32.github.io">DigiTol</a>. The source code is licensed under
       <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
     </p>
+    <a href="https//erickarugu32" title="Github Repository"> <span><i class="fa fa-github"></i>&nbsp;Repo</span></a>
   </div>
 </footer>
   `,

@@ -17,19 +17,28 @@
     </div>
 
     <div class="navbar-end">
+      <a class="navbar-item" [routerLink]="['/gallery']" routerLinkActive>
+        Gallery
+      </a>
         <a class="navbar-item" [routerLink]="['/faq']" routerLinkActive>
           FAQ
         </a>
       <div class="navbar-item" *ngIf="!user">
         <div class="buttons">
-          <a class="button is-primary" [routerLink]="['/login']">
-            Login &nbsp;<i class="fa fa-lock"></i>
+          <a class="button is-primary is-rounded" [routerLink]="['/login']">
+            Login
+          </a>
+          <a class="button is-primary is-inverted is-rounded" [routerLink]="['/register']">
+            Register
           </a>
         </div>
       </div>
       <div class="navbar-item has-dropdown is-hoverable" *ngIf="user">
           <a class="navbar-link">@APCS-Y4</a>
           <div class="navbar-dropdown">
+            <a class="navbar-item">
+              <strong><i class="fa fa-user has-text-info"></i>&nbsp; Account</strong>
+            </a>
             <a class="navbar-item" (click)="logOut()">
               <strong><i class="fa fa-sign-out has-text-danger"></i> Log Out</strong>
             </a>

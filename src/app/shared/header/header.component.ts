@@ -11,12 +11,14 @@ export class HeaderComponent implements OnInit {
   @ViewChild('navMenu') navMenu: ElementRef;
 
   user;
-  constructor(private authService: AuthService) {
-
+  constructor(private authService: AuthService){
+    this.authService.currentUser.subscribe(currentUser => {
+      this.user = currentUser;
+      });
   }
 
   ngOnInit(): void {
-    this.user = JSON.parse(localStorage.getItem('user'));
+
   }
 
   toggleNavbar(){

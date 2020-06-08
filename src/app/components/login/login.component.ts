@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from 'src/app/_helpers';
 import { Router } from '@angular/router';
 
@@ -17,13 +17,16 @@ import { Router } from '@angular/router';
         height: 90vh;
         display: flex;
       }
-      .img-box{
+      .img-box {
         text-align: center;
       }
-      img{
+      img {
         width: 40px;
       }
-    `
+      img:hover{
+        cursor: pointer;
+      }
+    `,
   ]
 })
 export class LoginComponent implements OnInit {
@@ -32,6 +35,7 @@ export class LoginComponent implements OnInit {
   submitted: false;
   loading: boolean = false;
   errors = '';
+  @ViewChild('modal') modal: ElementRef;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -39,9 +43,44 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.loading = true;
-    this.authService.SignIn(this.email,this.password)
-    .then(
-      (data) =>{console.log(data);this.loading=false;this.router.navigate(['/compliments'])},
-      (error) =>{console.log(error);this.loading=false})
+    this.errors = "";
+    this.authService.SignIn(this.email, this.password).then(
+      (data) => {
+        console.log(data);
+        this.loading = false;
+        this.router.navigate(['/compliments']);
+      },
+      (error) => {
+        console.log(error.code);
+        this.checkErrorType(error);
+        this.loading = false;
+      }
+    );
+  }
+
+  checkErrorType(error){
+    if(error.code ==="auth/invalid-email") return this.errors = "Invalid Email type";
+    if(error.code==="auth/user-not-found") return this.errors = "Email not registered";
+    if(error.code==="auth/wrong-password") return this.errors = "Wrong password";
+    else return "An error occurred. Please try again."
+  }
+
+  async toggleModal() {
+    this.modal.nativeElement.classList.toggle('is-active');
+  }
+
+  loginWithGoogle(){
+    this.authService.doGoogleLogin().then(
+      (data) => {
+        console.log(data);
+        this.loading = false;
+        this.router.navigate(['/compliments']);
+      },
+      (error) => {
+        console.log(error.code);
+        this.checkErrorType(error);
+        this.loading = false;
+      }
+    );
   }
 }

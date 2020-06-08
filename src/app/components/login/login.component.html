@@ -3,15 +3,23 @@
       <div class="column is-half is-offset-one-quarter">
         <div class="box">
             <div class="img-box">
-                <img src="./../../../assets/img/logo.png" alt="Complimentr Logo">
+                <img src="./../../../assets/img/logo.png" alt="Complimentr Logo" [routerLink]="['/home']" title="Go Home">
               </div>
           <div class="has-text-centered">
-            <h2 class="is-size-3">Log In</h2>
+            <h2 class="is-size-3">LogIn</h2>
             <small class="has-text-danger" *ngIf="errors">{{errors}}</small>
           </div>
+          <hr>
           <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+            <div class="field has-text-centered">
+              <a class="button is-warning is-inverted" (click)="loginWithGoogle()">
+                <i class="fa fa-google has-text-success"></i>&nbsp;Login with Google
+              </a>
+             <hr class="title">
+             <h3 class="subtitle has-text-dark is-size-4">OR</h3>
+            </div>
             <div class="field">
-              <label class="label" for="email">Email</label>
+              <label class="label" for="email">Email:<span class="has-text-danger"> *</span></label>
               <p class="control has-icons-left has-icons-right">
                 <input type="email" name="email" [(ngModel)]="email" #userEmail=ngModel class="input" type="email"
                   id="email" placeholder="Email" required>
@@ -21,7 +29,7 @@
               </p>
             </div>
             <div class="field">
-              <label class="label" for="password">Password</label>
+              <label class="label" for="password">Password:<span class="has-text-danger"> *</span></label>
               <p class="control has-icons-left">
                 <input type="password" name="password" [(ngModel)]="password" #userPassword=ngModel class="input"
                   type="password" id="password" placeholder="Password" required>
@@ -30,12 +38,19 @@
                 </span>
               </p>
             </div>
+            <a class="link" (click)="toggleModal()"><small>Forgot password</small></a>
             <div>
               <button [disabled]="!loginForm.form.valid" class="button is-success"
-                [class.is-loading]="loading">Login</button>
+                [class.is-loading]="loading">Login&nbsp;<i class="fa fa-lock"></i></button>
             </div>
           </form>
+          <div class="has-text-centered">
+            <small>Don't have Account?<a class="link" [routerLink]="['/register']">&nbsp;Register</a></small>
+          </div>
         </div>
       </div>
+    </div>
+    <div class="modal" id="modal" #modal>
+      <app-reset-password (closeBtn)="toggleModal()"></app-reset-password>
     </div>
 </section>
